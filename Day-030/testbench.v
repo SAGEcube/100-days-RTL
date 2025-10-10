@@ -1,0 +1,21 @@
+`timescale 1ns / 1ps
+
+module test_bench;
+  reg [7:0]in;
+  wire [2:0]out;
+  
+  priority_encoder dut(in, out);
+  
+  always
+  begin
+  in= $random;
+  #10;
+  end
+  initial 
+     begin
+       $dumpfile("test_bench.vcd");
+       $dumpvars(0,test_bench);
+       $monitor("in: %b  out: %b",in, out);
+     #100 $finish;
+     end
+endmodule
