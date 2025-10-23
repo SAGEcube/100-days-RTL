@@ -1,0 +1,60 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/23/2025 12:12:05 PM
+// Design Name: 
+// Module Name: test_bench
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+`timescale 1ns / 1ps
+
+module test_bench;
+reg [3:0]BCD;
+wire [6:0]segment7;
+
+BCD_to_7segment dut(BCD, segment7);
+
+always begin
+            BCD= 4'd0;   
+        #10;
+            BCD= 4'd1; 
+        #10;
+            BCD= 4'd2; 
+        #10;
+            BCD= 4'd3; 
+        #10;
+            BCD= 4'd4; 
+        #10;
+            BCD= 4'd5; 
+        #10;
+            BCD= 4'd6; 
+        #10;
+            BCD= 4'd7; 
+        #10;
+            BCD= 4'd8; 
+        #10;
+            BCD= 4'd9; 
+        #10;
+	end
+initial begin
+$dumpfile("test_bench.vcd");
+$dumpvars(0,test_bench);
+
+$monitor("\t BCD: %d : 7 segment display: %h", BCD, segment7);
+#100 $finish;
+end 
+endmodule
